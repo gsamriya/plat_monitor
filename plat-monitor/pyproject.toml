@@ -1,0 +1,60 @@
+[project]
+name = "org_monitor"
+dynamic = ["version"]
+description = "This module contains code and config for managing our monitoring functionality."
+authors = [
+    { name="Irish Centre for High End Computing", email="platform_engineering@org.ie" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic",
+    "prometheus-client"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-sugar",
+    "pytest-mock",
+    "black",
+    "mypy",
+    "flake8",
+    "pylint"
+]
+demo = [
+    "fastapi",
+    "uvicorn",
+    "Jinja2"
+]
+
+[project.urls]
+Repository = "https://git.org.ie/platform-engineering/plat-monitor.git"
+Homepage = "https://git.org.ie/platform-engineering/plat-monitor.git"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "org_monitor.__version__.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+log_cli = 1
+log_cli_level = "debug"
+addopts = "--cov=org_monitor --cov-report term --cov-fail-under=87 --cov-report xml:coverage.xml --cov-report html"
+
+[tool.tox]
+requires = ["tox"]
+env_list = ["3.10", "3.13","run_base"]
+skip_missing_interpreters = true
+
+[tool.tox.env.run_base]
+description = "Run Unit and Integration Tests"
+deps = [".[test]"]
+commands = [["pytest", "tests"]]
