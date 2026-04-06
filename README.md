@@ -1,6 +1,6 @@
 # org_monitor
 
-A simple Python monitoring module from org for exposing custom metrics to Prometheus. Works with any Python project. Example below uses FastAPI, but you can use it with any framework.
+A simple Python monitoring module for exposing custom metrics to Prometheus. Works with any Python project. Example below uses FastAPI, but you can use it with any framework.
 
 ---
 
@@ -165,9 +165,6 @@ sum(rate(http_request_duration_seconds_count{endpoint="/flip-coins"}[1m]))
 Use these queries in Prometheus or Grafana dashboards to monitor and visualize your application's request latency.
 
 
-### Example Project for Reference
-
-For a complete example, refer to the FastAPI monitoring demo project: [fastapi-monitor-demo](https://git.org.ie/njanagaraj/fastapi-monitor-demo.git)
 
 ## Monitoring Stack
 
@@ -191,29 +188,9 @@ Here’s a step-by-step **Markdown guide** for setting up your monitoring stack 
 
 ---
 
-# Monitoring Stack Setup Guide
 
-## 1. Install Prerequisites
 
-- **Vagrant:**  
-  ```sh
-  brew tap hashicorp/tap
-  brew install hashicorp/tap/hashicorp-vagrant
-  ```
-- **VirtualBox:**  
-  [Download VirtualBox for macOS ARM64](https://download.virtualbox.org/virtualbox/7.1.10/VirtualBox-7.1.10-169112-macOSArm64.dmg)
-
----
-
-## 2. Clone Repositories
-
-```sh
-git clone https://git.org.ie/platform-engineering/plat-api
-```
-
----
-
-## 3. Set Up Vagrant VM
+## Vagrant VM set
 
 - Create a folder for Vagrant and add the following `Vagrantfile`:
 
@@ -285,11 +262,6 @@ vagrant up
 
 ## 4. Start the Monitoring Stack
 
-```
-git clone https://git.org.ie/platform-engineering/plat-monitor
-cd plat-monitor
-```
-
 ```sh
 cd plat-monitor/docker
 ./start.sh
@@ -349,10 +321,6 @@ cd plat-monitor/docker
 - **http_request_duration_highr_seconds**: High-resolution histogram.
 
 
-## 8. (Optional) Reference for Elasticsearch Logging
-
-- For configuring logging to Elasticsearch in your FastAPI app, visit:  
-  [https://git.org.ie/platform-engineering/org-logger](https://git.org.ie/platform-engineering/org-logger)
 
   ## Kibana and Elasticsearch Access
 
@@ -365,10 +333,6 @@ Kibana and Elasticsearch are hosted at:
 - **Password:** `7eTbmQkh`
 
 ---
-
-## Elasticsearch Logging Configuration
-
-For configuring logging to Elasticsearch in your applications, visit the [org-logger repository](https://git.org.ie/platform-engineering/org-logger).
 
 ---
 
