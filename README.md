@@ -1,4 +1,4 @@
-# org_monitor
+# plat_monitor
 
 A simple Python monitoring module for exposing custom metrics to Prometheus. Works with any Python project. Example below uses FastAPI, but you can use it with any framework.
 
@@ -30,12 +30,12 @@ docker-compose up -d
 ```
 
 This will start Prometheus and Grafana services in detached mode.
-### 3. Using the org_monitor module in your Python code
+### 3. Using the plat_monitor module in your Python code
 
 Using the custom `CustomCounter`:
 
 ```python
-from org_monitor import CustomCounter, CounterConfig
+from plat_monitor import CustomCounter, CounterConfig
 
 # Create a custom counter
 my_counter = CustomCounter(CounterConfig(name="my_counter", description="A custom counter"))
@@ -47,7 +47,7 @@ my_counter.inc(5)
 Using the custom `CustomRequestCounter` with labels:
 
 ```python
-from org_monitor import CustomRequestCounter, RequestCounterConfig
+from plat_monitor import CustomRequestCounter, RequestCounterConfig
 
 # Create a custom request counter with labels
 request_counter = CustomRequestCounter(
@@ -73,7 +73,7 @@ You can use `CustomTimer` to track request latency or duration in your Python ap
 Below is an example usage, as implemented in the FastAPI coin toss API:
 
 ```python
-from org_monitor import CustomTimer, TimerConfig
+from plat_monitor import CustomTimer, TimerConfig
 from time import time
 
 # Create a custom timer (optionally with labels)
@@ -101,7 +101,7 @@ You can use the process metrics utilities to track when a process starts, ends, 
 Below is an example usage:
 
 ```python
-from org_monitor import (
+from plat_monitor import (
     ProcessGauge, ProcessGaugeConfig,
     ProcessErrorCounter, ProcessErrorCounterConfig
 )
